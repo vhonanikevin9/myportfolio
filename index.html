@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAMBUWANI VHONANI | Graphic Designer</title>
+    
+    <!-- Futuristic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-dark: #050508;
+            --neon-cyan: #00f3ff;
+            --neon-magenta: #ff00ea;
+            --text-main: #e0e0e0;
+            --text-muted: #8892b0;
+            --glass-bg: rgba(10, 15, 30, 0.6);
+            --glass-border: rgba(0, 243, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: crosshair; 
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 4px;
+        }
+
+        /* --- ANIMATED BACKGROUND GRID --- */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            perspective: 1000px;
+            transform: translateZ(0);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 40px; }
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Glitch Effect Title */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+            margin-bottom: 10px;
+        }
+
+        h1::before, h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+        }
+
+        h1::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--neon-magenta);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        h1::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--neon-cyan);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(23px, 9999px, 83px, 0); }
+            20% { clip: rect(66px, 9999px, 12px, 0); }
+            40% { clip: rect(98px, 9999px, 54px, 0); }
+            60% { clip: rect(12px, 9999px, 98px, 0); }
+            80% { clip: rect(45px, 9999px, 33px, 0); }
+            100% { clip: rect(77px, 9999px, 88px, 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            20% { clip: rect(12px, 9999px, 45px, 0); }
+            40% { clip: rect(85px, 9999px, 15px, 0); }
+            60% { clip: rect(33px, 9999px, 77px, 0); }
+            80% { clip: rect(99px, 9999px, 22px, 0); }
+            100% { clip: rect(54px, 9999px, 90px, 0); }
+        }
+
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .bio {
+            max-width: 700px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--neon-magenta);
+            backdrop-filter: blur(5px);
+        }
+
+        .bio strong {
+            color: #fff;
+        }
+
+        /* Skill Badges */
+        .skills-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* --- PORTFOLIO GRID --- */
+        .portfolio-section {
+            padding: 80px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* Glassmorphism Cards */
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1 / 1;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer; /* Added cursor pointer for clicking */
+        }
+
+        /* Futuristic Corner Accents */
+        .card::before, .card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-cyan);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        .card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            pointer-events: none; /* Prevents img drag on click */
+        }
+
+        .card:hover {
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            border-color: var(--neon-cyan);
+            transform: translateY(-5px);
+        }
+
+        .card:hover::before, .card:hover::after {
+            width: 30px;
+            height: 30px;
+            border-color: var(--neon-magenta);
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 20px 20px;
+            background: linear-gradient(to top, rgba(5, 5, 8, 0.95), transparent);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 1;
+        }
+
+        .card:hover .card-overlay {
+            transform: translateY(0);
+        }
+
+        .card-overlay h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: var(--neon-cyan);
+            margin-bottom: 5px;
+        }
+
+        .card-overlay p {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- FLOATING WHATSAPP BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            bottom: 40px;
+            right: 40px;
+            background-color: rgba(37, 211, 102, 0.1);
+            color: #25d366;
+            border: 2px solid #25d366;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .whatsapp-float:hover {
+            background-color: #25d366;
+            color: #fff;
+            box-shadow: 0 0 30px #25d366, 0 0 60px #25d366;
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* WhatsApp Pulse Animation */
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(37, 211, 102, 0.3);
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* --- LIGHTBOX GALLERY --- */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.3);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        /* Lightbox Navigation Buttons */
+        .lightbox-btn {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            z-index: 2010;
+            user-select: none;
+        }
+
+        .lightbox-btn:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            background: none;
+            border: none;
+            color: var(--neon-magenta);
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 2010;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: #fff;
+            transform: scale(1.2) rotate(90deg);
+            text-shadow: 0 0 20px var(--neon-magenta);
+        }
+
+        .lightbox-prev {
+            left: -80px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            right: -80px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Responsive Lightbox */
+        @media (max-width: 900px) {
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+            .lightbox-close { top: 15px; right: 20px; font-size: 2.5rem; }
+            .lightbox-btn { width: 40px; height: 40px; font-size: 1.5rem; }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #020204;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+
+        /* Responsive Grid */
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 30px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Futuristic Background Grid -->
+    <div class="cyber-grid"></div>
+
+    <!-- Hero Section -->
+    <header>
+        <h1 data-text="RAMBUWANI VHONANI">RAMBUWANI VHONANI</h1>
+        <h2 class="subtitle">Graphic Designer</h2>
+        
+        <div class="bio">
+            <p>With <strong>5 years of professional experience</strong>, I architect visual identities and eye-catching marketing materials. My arsenal includes <strong>Adobe Photoshop, Adobe Illustrator</strong>, and other industry-standard design software.</p>
+        </div>
+        
+        <div class="skills-container">
+            <span class="skill-badge"><i class="fa-brands fa-adobe"></i> Photoshop</span>
+            <span class="skill-badge"><i class="fa-brands fa-adobe"></i> Illustrator</span>
+            <span class="skill-badge"><i class="fa-solid fa-pen-nib"></i> Branding</span>
+            <span class="skill-badge"><i class="fa-solid fa-shirt"></i> Apparel</span>
+            <span class="skill-badge"><i class="fa-solid fa-rectangle-ad"></i> Print Media</span>
+        </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="section-header">
+            <h2 class="section-title">Project Archive</h2>
+        </div>
+        
+        <div class="grid" id="portfolio-grid">
+
+            <!-- 1 -->
+            <div class="card">
+                <img src="1 (1).jpeg" alt="Kingdom of God Cover">
+                <div class="card-overlay">
+                    <h3>The Kingdom of God</h3>
+                    <p>Children's Book Cover</p>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="card">
+                <img src="1 (2).jpeg" alt="Road to Venda Flyer">
+                <div class="card-overlay">
+                    <h3>Road to Venda</h3>
+                    <p>Music Event Flyer</p>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="card">
+                <img src="1 (3).jpeg" alt="Cactus T-Shirt">
+                <div class="card-overlay">
+                    <h3>Cactus Essentials</h3>
+                    <p>T-Shirt Apparel Design</p>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="card">
+                <img src="1 (4).jpeg" alt="Cactus Hoodie">
+                <div class="card-overlay">
+                    <h3>Cactus Essentials</h3>
+                    <p>Hoodie Apparel Design</p>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="card">
+                <img src="1 (5).jpeg" alt="Mudzulapo T-Shirt">
+                <div class="card-overlay">
+                    <h3>Mudzulapo Wa Ha Masakona</h3>
+                    <p>Custom Apparel & Typography</p>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="card">
+                <img src="1 (6).jpeg" alt="Agri Nema Maize Meal">
+                <div class="card-overlay">
+                    <h3>Agri Nema</h3>
+                    <p>Product Packaging Design</p>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="card">
+                <img src="1 (7).jpeg" alt="Cactus Logo">
+                <div class="card-overlay">
+                    <h3>Cactus Essentials</h3>
+                    <p>Brand Identity & Logo</p>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="card">
+                <img src="1 (8).jpeg" alt="Chicken Feets and Eggs">
+                <div class="card-overlay">
+                    <h3>Agri Nema</h3>
+                    <p>Social Media Promo</p>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="card">
+                <img src="1 (9).jpeg" alt="Chicken Offals">
+                <div class="card-overlay">
+                    <h3>Agri Nema</h3>
+                    <p>Product Marketing Poster</p>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="card">
+                <img src="1 (10).jpeg" alt="Chicken for Sale">
+                <div class="card-overlay">
+                    <h3>Agri Nema</h3>
+                    <p>Commercial Promo Design</p>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="card">
+                <img src="1 (11).jpeg" alt="Lumveleni Coffee">
+                <div class="card-overlay">
+                    <h3>Lumveleni</h3>
+                    <p>Cafe Marketing Design</p>
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="card">
+                <img src="1 (12).jpeg" alt="Coffee and Tea Menu">
+                <div class="card-overlay">
+                    <h3>Lumveleni</h3>
+                    <p>Menu & Typography Design</p>
+                </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="card">
+                <img src="1 (13).jpeg" alt="Crossover Flyer">
+                <div class="card-overlay">
+                    <h3>Crossover 2025</h3>
+                    <p>Event Flyer & Poster</p>
+                </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="card">
+                <img src="1 (14).jpeg" alt="Distinguished Couples Flyer">
+                <div class="card-overlay">
+                    <h3>Distinguished Couples</h3>
+                    <p>Church Event Flyer</p>
+                </div>
+            </div>
+
+            <!-- 15 -->
+            <div class="card">
+                <img src="1 (15).jpeg" alt="Distinguished Couples Banner">
+                <div class="card-overlay">
+                    <h3>Distinguished Couples</h3>
+                    <p>Pull-Up Banner Mockup</p>
+                </div>
+            </div>
+
+            <!-- 16 -->
+            <div class="card">
+                <img src="1 (16).jpeg" alt="Venrap Flyer">
+                <div class="card-overlay">
+                    <h3>Venrap</h3>
+                    <p>Party Event Flyer</p>
+                </div>
+            </div>
+
+            <!-- 17 -->
+            <div class="card">
+                <img src="1 (17).jpeg" alt="Echoes of a Heart Cover">
+                <div class="card-overlay">
+                    <h3>Echoes of a Heart</h3>
+                    <p>Poetry Book Cover</p>
+                </div>
+            </div>
+
+            <!-- 18 -->
+            <div class="card">
+                <img src="1 (18).jpeg" alt="Echoes of a Heart Mockup">
+                <div class="card-overlay">
+                    <h3>Echoes of a Heart</h3>
+                    <p>3D Book Mockup</p>
+                </div>
+            </div>
+
+            <!-- 19 -->
+            <div class="card">
+                <img src="1 (19).jpeg" alt="Heartbeat of Venda Cover">
+                <div class="card-overlay">
+                    <h3>The Heartbeat of Venda</h3>
+                    <p>Illustrative Book Cover</p>
+                </div>
+            </div>
+
+            <!-- 20 -->
+            <div class="card">
+                <img src="1 (20).jpeg" alt="Heartbeat of Venda Mockup">
+                <div class="card-overlay">
+                    <h3>The Heartbeat of Venda</h3>
+                    <p>3D Book Mockup</p>
+                </div>
+            </div>
+
+            <!-- 21 -->
+            <div class="card">
+                <img src="1 (21).jpeg" alt="Lumveleni Pool Club Logo">
+                <div class="card-overlay">
+                    <h3>Lumveleni Pool Club</h3>
+                    <p>Brand Logo Design</p>
+                </div>
+            </div>
+
+            <!-- 22 -->
+            <div class="card">
+                <img src="1 (22).jpeg" alt="Noir Lab Logo">
+                <div class="card-overlay">
+                    <h3>Noir Lab</h3>
+                    <p>Corporate Identity</p>
+                </div>
+            </div>
+
+            <!-- 23 -->
+            <div class="card">
+                <img src="1 (23).jpeg" alt="Omtaki Logistics Logo">
+                <div class="card-overlay">
+                    <h3>Omtaki Logistics</h3>
+                    <p>Vector Logo Design</p>
+                </div>
+            </div>
+
+            <!-- 24 -->
+            <div class="card">
+                <img src="1 (24).jpeg" alt="Tsiphalapathi Jersey">
+                <div class="card-overlay">
+                    <h3>Tsiphalapathi FC</h3>
+                    <p>Custom Sports Jersey</p>
+                </div>
+            </div>
+
+            <!-- 25 -->
+            <div class="card">
+                <img src="1 (25).jpeg" alt="Tekniqik Hoodie">
+                <div class="card-overlay">
+                    <h3>Tekniqik</h3>
+                    <p>Typographic Apparel Design</p>
+                </div>
+            </div>
+
+            <!-- 26 -->
+            <div class="card">
+                <img src="1 (26).jpeg" alt="Kingdom of God Mockup">
+                <div class="card-overlay">
+                    <h3>The Kingdom of God</h3>
+                    <p>3D Book Mockup</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
+        <button class="lightbox-btn lightbox-prev" id="lightbox-prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img src="" alt="Full View" class="lightbox-img" id="lightbox-img">
+        </div>
+        <button class="lightbox-btn lightbox-next" id="lightbox-next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 RAMBUWANI VHONANI // SYSTEM ONLINE.</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/27722058773" class="whatsapp-float" target="_blank" title="Contact me on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Gallery JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('lightbox-close');
+            const prevBtn = document.getElementById('lightbox-prev');
+            const nextBtn = document.getElementById('lightbox-next');
+
+            let currentIndex = 0;
+            const totalImages = cards.length;
+
+            // Open Lightbox
+            cards.forEach((card, index) => {
+                card.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateImage();
+                    lightbox.classList.add('active');
+                });
+            });
+
+            // Close Lightbox
+            closeBtn.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+
+            // Click outside image to close
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+
+            // Update Image Source
+            function updateImage() {
+                const imgSrc = cards[currentIndex].querySelector('img').src;
+                lightboxImg.src = imgSrc;
+            }
+
+            // Next Image
+            function showNext() {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateImage();
+            }
+
+            // Previous Image
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                updateImage();
+            }
+
+            // Button Events
+            nextBtn.addEventListener('click', showNext);
+            prevBtn.addEventListener('click', showPrev);
+
+            // Keyboard Navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'ArrowRight') showNext();
+                if (e.key === 'ArrowLeft') showPrev();
+                if (e.key === 'Escape') lightbox.classList.remove('active');
+            });
+
+            // Touch Swipe Support for Mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            lightbox.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            lightbox.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50; // Minimum distance to register a swipe
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    showNext(); // Swipe Left -> Next
+                }
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    showPrev(); // Swipe Right -> Previous
+                }
+            }
+        });
+    </script>
+</body>
+</html>
